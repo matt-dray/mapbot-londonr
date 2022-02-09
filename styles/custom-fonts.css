@@ -1,0 +1,15 @@
+
+/* Import from Google Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend');
+@import url('https://fonts.googleapis.com/css?family=Lekton');
+
+/* Sans serif body text */
+
+body { font-family: 'Lexend', sans-serif; }
+
+/* Monospace script */ 
+
+.remark-code, .remark-inline-code {
+  font-family: 'Lekton', monospace;
+}

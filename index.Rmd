@@ -1,0 +1,35 @@
+---
+pagetitle: "Make a Twitter bot"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["default", "styles/custom.css", "styles/custom-fonts.css"]
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle, center, inverse
+
+# Make a Twitter bot with {rtweet} and GitHub Actions
+
+## LondonR, 2022-02-17
+
+`r fontawesome::fa('twitter')` @mattdray<br>`r fontawesome::fa('globe')` matt-dray.com
+
+---
+class: inverse
+background-image: url("images/FHsHJuHXsAYPxJ3.jpg")
+
+Placeholder Text
+
+---
+class: middle, center, inverse
+
+Placeholder text
+
+---
+class: middle
+
+Placeholder text
