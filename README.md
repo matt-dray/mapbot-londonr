@@ -8,6 +8,8 @@
 
 A repo to host the {xaringan} slides for my talk [at LondonR on 17 Feb 2022](https://ti.to/londonr/londonr-february-2022): 'Make a Twitter bot with {rtweet} and GitHub Actions'.
 
+The slides are [available to view online](https://matt-dray.github.io/mapbot-londonr/).
+
 For more information about the bot, check out:
 
 * [\@londonmapbot on Twitter](https://twitter.com/londonmapbot)
