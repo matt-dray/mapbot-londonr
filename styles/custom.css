@@ -11,16 +11,26 @@
   display: block;
   overflow-x: auto;
   padding: .5em;
-  color: #333;
-  background: #f8f8f8;
-  border-radius: 10px;
-  font-size: 30px;
+  color: #E1E8ED;
+  background: #1DA1F2;
+  border-radius: 3px;
+  font-size: 20px;
+}
+
+.mono-font {
+  font-family: 'Lekton', monospace;
 }
 
 .remark-inline-code {
-  background: #f8f8f8;
-  border-radius: 10px;
+  color: #E1E8ED;
+  background: #1DA1F2;
+  border-radius: 3px;
   padding: 1px;
+}
+
+.remark-code-line-highlighted  { 
+  color: #1DA1F2;
+  background-color: #E1E8ED;
 }
 
 .remark-slide-number {
@@ -28,7 +38,7 @@
 }
 
 a, a > code {
-  color: #657786;
+  color: #E1E8ED;
   text-decoration: none;
 }
 
@@ -40,14 +50,19 @@ a, a > code {
   text-decoration: none;
 }
 
-.remark-code-line-highlighted  { 
-  background-color: #fff00;
+.inverse {
+  color: #E1E8ED;
+  background-color: #1DA1F2;
+  text-decoration: none;
 }
 
-.inverse {
-  background-color: #1DA1F2;
-  color: #fff;
-  text-decoration: none;
+.super {
+  vertical-align: super;
+  font-size: 40%;
+}
+
+.dark-font {
+  color: #14171A;
 }
 
 /* Two-column layout */
