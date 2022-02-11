@@ -50,17 +50,15 @@ class: middle, center, inverse
 ---
 class: middle, center
 
-<a href="https://www.matt-dray.com"><img src="images/IUlhDKX9_400x400.png", width = 75%></a>
+<a href="https://www.matt-dray.com"><img src="images/IUlhDKX9_400x400.png", width = 60%></a>
 
 ---
 class: middle, center
 
-<a href="https://www.rostrum.blog"><img src="images/rostrum_hex.png", width = 50%></a>
+<a href="https://www.rostrum.blog"><img src="images/rostrum_hex.png", width = 40%></a>
 
----
-class: middle
-
-[The idea]
+???
+* Turning showerthoughts into learning
 
 ---
 class: middle, center, inverse
@@ -114,12 +112,19 @@ class: middle
 * Free API, with limitations
 
 ???
-* Dev account required, x requests per min, x requests total
+* Limited to 18k tweets every 15 mins 
+* To request more than that, set `retryonratelimit = TRUE`
 
 ---
 class: middle
 
-[rtweet screenshot]
+```
+rtweet::search_tweets(
+  "#rstats",
+  n = 10000,
+  include_rts = FALSE
+)
+```
 
 ---
 class: middle
@@ -150,6 +155,7 @@ class: middle
 * Free, with limitations
 
 ???
+* Used for continuous integration, like R package testing, coverage and {pkgdown} deployment
 * Public repo, x minutes
 
 ---
@@ -195,9 +201,7 @@ class: middle
 
 1. [.dark-font[Store keys as secrets .super[`r fontawesome::fa("link")`]]](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
 
-1. Create R script
-
-1. Create GitHub Actions YAML
+1. Create scripts
 
 
 ---
@@ -370,6 +374,15 @@ rtweet::post_tweet(
 ???
 * Generate a string containing the coordinates and an OpenStreetMap link
 * Post the tweet, containing the text string and image, using the API token
+
+---
+class: middle
+
+# Quickstart
+
+* Fork londonmapbot
+* Use the repo as a template
+
 
 ---
 class: middle, center, inverse

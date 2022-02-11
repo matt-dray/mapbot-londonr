@@ -11,8 +11,8 @@
   display: block;
   overflow-x: auto;
   padding: .5em;
-  color: #E1E8ED;
-  background: #1DA1F2;
+  color: #14171A;
+  background: #AAB8C2;
   border-radius: 3px;
   font-size: 20px;
 }
@@ -22,8 +22,8 @@
 }
 
 .remark-inline-code {
-  color: #E1E8ED;
-  background: #1DA1F2;
+  color: #14171A;
+  background: #AAB8C2;
   border-radius: 3px;
   padding: 1px;
 }
