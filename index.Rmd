@@ -23,6 +23,19 @@ class: middle, center, inverse
 ---
 class: middle
 
+# tl;dr
+
+* [.dark-font[Scroll through @londonmapbot .super[`r fontawesome::fa("link")`]]](https://www.twitter.com/londonmapbot)
+
+* [.dark-font[Clone on GitHub .super[`r fontawesome::fa("link")`]]](https://www.github.com/matt-dray/londonmapbot)
+
+* [.dark-font[Read the blog .super[`r fontawesome::fa("link")`]]](https://www.rostrum.blog/2020/09/21/londonmapbot/)
+
+---
+class: middle
+
+# Eh?
+
 1. Who?
 
 1. What?
@@ -55,9 +68,14 @@ class: middle, center, inverse
 # What?
 
 ---
-class: middle
+class: middle, center, inverse
+background-image: url("images/profile.png")
+background-size: 100%
 
-[londonmapbot screenshot]
+---
+class: middle, center, inverse
+background-image: url("images/tweet.png")
+background-size: 100%
 
 ---
 class: inverse
@@ -357,6 +375,7 @@ rtweet::post_tweet(
 class: middle, center, inverse
 
 # The mapbotverse
+#`r fontawesome::fa('robot')`
 
 ---
 class: middle
@@ -365,10 +384,6 @@ class: middle
 
 ---
 class: middle, center, inverse
-
-# Happy botday!
-
-#`r fontawesome::fa('robot')`
 
 `r fontawesome::fa('twitter')` [@mattdray .super[`r fontawesome::fa("link")`]](https://www.twitter.com/mattdray)
 
