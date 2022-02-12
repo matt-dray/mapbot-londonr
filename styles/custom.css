@@ -21,6 +21,10 @@
   font-family: 'Lekton', monospace;
 }
 
+.small-font {
+  font-size: 25px;
+}
+
 .remark-inline-code {
   color: #14171A;
   background: #AAB8C2;

@@ -16,20 +16,29 @@ class: middle, center, inverse
 
 # `r fontawesome::fa("robot")`
 
-## LondonR, 2022-02-17
+LondonR, 2022-02-17
 
-[matt-dray.com .super[`r fontawesome::fa("link")`]](https://www.matt-dray.com)
+.small-font[`r fontawesome::fa('globe')` [matt-dray.com](https://www.matt-dray.com) `r fontawesome::fa('twitter')` [@mattdray](https://www.twitter.com/mattdray) `r fontawesome::fa('github')` [matt-dray](https://www.github.com/matt-dray) `r fontawesome::fa('pen')` [rostrum.blog](https://www.rostrum.blog)]
+.small-font[[https://matt-dray.github.io/mapbot-londonr](https://matt-dray.github.io/mapbot-londonr)]
+
+???
+* Find the slides online now
+* See presenter notes by pressing the <kbd>P</kbd> key
 
 ---
 class: middle
 
 # tl;dr
 
-* [.dark-font[Scroll through @londonmapbot .super[`r fontawesome::fa("link")`]]](https://www.twitter.com/londonmapbot)
+* [.dark-font[Visit @londonmapbot .super[`r fontawesome::fa("link")`]]](https://www.twitter.com/londonmapbot)
 
-* [.dark-font[Clone on GitHub .super[`r fontawesome::fa("link")`]]](https://www.github.com/matt-dray/londonmapbot)
+* [.dark-font[Fork on GitHub .super[`r fontawesome::fa("link")`]]](https://www.github.com/matt-dray/londonmapbot)
 
-* [.dark-font[Read the blog .super[`r fontawesome::fa("link")`]]](https://www.rostrum.blog/2020/09/21/londonmapbot/)
+* [.dark-font[Read the original blog .super[`r fontawesome::fa("link")`]]](https://www.rostrum.blog/2020/09/21/londonmapbot/)
+
+???
+* Too long; didn't read
+* You can go to sleep now
 
 ---
 class: middle
@@ -42,6 +51,11 @@ class: middle
 
 1. How?
 
+???
+* Who am I
+* What I'm talking about
+* How to do it yourself
+
 ---
 class: middle, center, inverse
 
@@ -50,26 +64,40 @@ class: middle, center, inverse
 ---
 class: middle, center
 
-<a href="https://www.matt-dray.com"><img src="img/mattdray-avatar.png", width = 60%></a>
+<a href="https://www.matt-dray.com"><img src="img/mattdray-avatar.png", width = 40%></a>
 
----
-class: middle, center
+.small-font[
+`r fontawesome::fa('globe')` [.dark-font[matt-dray.com]](https://www.matt-dray.com) `r fontawesome::fa('twitter')` [.dark-font[@mattdray]](https://www.twitter.com/mattdray) `r fontawesome::fa('github')` [.dark-font[matt-dray]](https://www.github.com/matt-dray) `r fontawesome::fa('pen')` [.dark-font[rostrum.blog]](https://www.rostrum.blog)
+]
 
-<a href="https://www.rostrum.blog"><img src="img/rostrum-hex.png", width = 40%></a>
+???
+* Data analyst in the public sector
+* Everything here is my thoughts
+* I do R for fun
 
 ---
 background-image: url("img/rostrum-blog-home.png")
 background-size: 100%
+
+???
+* I write for fun about (1) R solutions, (2) zeitgeists, (3) stretching R too far (3) mild trolling
 
 ---
 class: middle, center, inverse
 
 # What?
 
+???
+* This talk is about one showerthought in particular
+* There's three components to talk about (1) {rtweet}, (2) Mapbox, (3) GitHub Actions
+
 ---
 class: middle, center
 background-image: url("img/twitter-londonmapbot-profile.png")
 background-size: 100%
+
+???
+* The @londonmapbot Twitter profile
 
 ---
 class: middle, center
@@ -101,12 +129,13 @@ class: middle
 
 # [.dark-font[`r fontawesome::fa("twitter")` {rtweet} .super[`r fontawesome::fa("link")`]]](https://docs.ropensci.org/rtweet/)
 
-* Twitter API access from R
+* Access Twitter from R
 
 * Free API, with limitations
 
 ???
-* Limited to 18k tweets every 15 mins 
+* R package by Mike Kearney
+* Limited to 18k tweets every 15 mins
 * To request more than that, set `retryonratelimit = TRUE`
 
 ---
@@ -117,11 +146,14 @@ background-size: 100%
 ---
 class: middle
 
-# [.dark-font[`r fontawesome::fa("map")` MapBox .super[`r fontawesome::fa("link")`]]](https://www.mapbox.com/)
+# [.dark-font[`r fontawesome::fa("map")` Mapbox .super[`r fontawesome::fa("link")`]]](https://www.mapbox.com/)
 
 * [.dark-font[Satellite imagery via API .super[`r fontawesome::fa("link")`]]](https://docs.mapbox.com/api/overview/)
 
-* [.dark-font[Free, with limitations .super[`r fontawesome::fa("link")`]]](https://docs.mapbox.com/api/overview/#rate-limits)
+* [.dark-font[Free, with limitations .super[`r fontawesome::fa("link")`]]](https://docs.mapbox.com/api/maps/static-images/#static-images-api-restrictions-and-limits)
+
+???
+* 1250 requests per minute to the static image API
 
 ---
 class: middle, center
@@ -135,26 +167,37 @@ class: middle
 
 * Run code on schedule
 
-* Free, with limitations
+* [.dark-font[Free, with limitations .super[`r fontawesome::fa("link")`]]](https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration#usage-limits)
 
 ???
+* Courtesy of GitHub, we can switch on a remote computer on push or schedule, run some code, then go to sleep
 * Used for continuous integration, like R package testing, coverage and {pkgdown} deployment
-* Public repo, x minutes
 
 ---
 class: middle, center
 background-image: url("img/github-actions-dehex.png")
 background-size: 100%
 
+???
+* Here is the Actions pane in a GiutHub repo for one of my R packages, {dehex}
+* There's three Actions: (1) R-CMD check, (2) rebuild the {pkgdown} website, (3) assess test coverage
+* These can be reported automatically in badges in the repo README
+
 ---
 class: middle, center, inverse
 
 # How?
 
+???
+* Now we have the components, what are the steps to building the bot?
+* I won't go into minute detail, but the steps are linked to the appropriate guidance pages so you can try it out after the session
+
 ---
 class: middle
 
 # [.dark-font[`r fontawesome::fa("twitter")` Twitter .super[`r fontawesome::fa("link")`]]](https://docs.ropensci.org/rtweet/)
+
+1. .dark-font[Start a new account]
 
 1. [.dark-font[Get developer status .super[`r fontawesome::fa("link")`]]](https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api)
 
@@ -163,13 +206,14 @@ class: middle
 1. [.dark-font[Get keys .super[`r fontawesome::fa("link")`]]](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api)
 
 ???
+* I did this with a fresh email account and 
 * 'Elevated' status allows access to API v1.1, which is what {rtweet} uses
 * [.dark-font[It was Oscar Baruffa who told me about this .super[`r fontawesome::fa("link")`]]](https://oscarbaruffa.com/twitterbot/)
 
 ---
 class: middle
 
-# `r fontawesome::fa("map")` MapBox
+# `r fontawesome::fa("map")` Mapbox
 
 1. [.dark-font[Sign up .super[`r fontawesome::fa("link")`]]](https://account.mapbox.com/auth/signup/)
 
@@ -180,12 +224,18 @@ class: middle
 
 # `r fontawesome::fa("github")` Github
 
-1. Create public repo
+1. Create a public repo
 
-1. [.dark-font[Store keys as secrets .super[`r fontawesome::fa("link")`]]](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+1. [.dark-font[Store keys/tokens as secrets .super[`r fontawesome::fa("link")`]]](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
 
 1. Create scripts
 
+???
+* Sharing is caring
+* A public repo is less constrained by Actions limits
+* Just two scripts are required, and in theory only one
+* A YAML file is just a specially formatted text document with some instructions that GitHub Actions will parse and execute
+* I've put the R code into a simple R script that is called by the YAML file
 
 ---
 class: middle
@@ -329,7 +379,7 @@ download.file(img_url, temp_file)
 
 ???
 * Sample latitude and longitude
-* Put these into the MapBox API string
+* Put these into the Mapbox API string
 * Download file to temporary location
 
 ---
@@ -361,32 +411,65 @@ rtweet::post_tweet(
 ---
 class: middle, center, inverse
 
-# The mapbotverse
-#`r fontawesome::fa('robot')`
+# [The mapbotverse .super[`r fontawesome::fa("link")`]](https://twitter.com/i/lists/1492559073287581707)
+# `r fontawesome::fa('robot')`
+
+???
+* You don't need to take my word for it
+* Many other people have adapted the code for other map bots and made it much better
+* But also people have created scheduled bots that don't involve maps
+* Hopefully this is inspirational
 
 ---
 background-image: url("img/twitter-mapbot-esmapbot.png")
 background-size: 100%
 
+???
+* @esmapbot by Roberto Jiménez (@roberer_)
+* Samples a point within a geojson of Spain (rather than a simple bounding box)
+* Uses Google Maps instead of OpenStreetMap
+* Emojis
+
 ---
 background-image: url("img/twitter-mapbot-narrowbotr.png")
 background-size: 100%
+
+???
+* @narrowbotR by Matt Kerlogue (@mattkerlogue)
+* Selects a random location on the English and Welsh canal network
+* Fetches a Flickr image from nearby, applying a 'photo score' to fetch the best candidate image
+* Otherwise fetches a Mapbox image
 
 ---
 background-image: url("img/twitter-mapbot-bigbookofr.png")
 background-size: 100%
 
+???
+* @BigBookofR by Oscar Baruffa (@OscarBaruffa)
+* Links to a random resource from the Big Book of R
+* It was Oscar who told me about needing 'elevated' developer status to access the old, version 1.1, Twitter APi, which is what {rtweet} was designed to communicate with
+
 ---
 background-image: url("img/github-londonmapbot.png")
 background-size: 100%
 
+???
+* You can do it too
+* Approach 1: start fresh
+* Approach 2: fork the repo, make changes
+* Approach 3: use the repo as a template, make changes
+* Approach 4: fork one of the other map bots that have used more complex approaches
+* Let me know about it!
+
 ---
 class: middle, center, inverse
 
-`r fontawesome::fa('twitter')` [@mattdray .super[`r fontawesome::fa("link")`]](https://www.twitter.com/mattdray)
+# Make a Twitter bot with {rtweet} and GitHub Actions
 
-`r fontawesome::fa('github')` [matt-dray .super[`r fontawesome::fa("link")`]](https://www.github.com/matt-dray)
+# `r fontawesome::fa("robot")`
 
-`r fontawesome::fa('pen')` [rostrum.blog .super[`r fontawesome::fa("link")`]](https://www.rostrum.blog)
+[Visit @londonmapbot .super[`r fontawesome::fa("link")`]](https://www.twitter.com/londonmapbot)<br>
+[Fork on GitHub .super[`r fontawesome::fa("link")`]](https://www.github.com/matt-dray/londonmapbot)<br>
+[Read the original blog .super[`r fontawesome::fa("link")`]](https://www.rostrum.blog/2020/09/21/londonmapbot/)<br>
 
-`r fontawesome::fa('globe')` [matt-dray.com .super[`r fontawesome::fa("link")`]](https://www.matt-dray.com)
+.small-font[`r fontawesome::fa('globe')` [matt-dray.com](https://www.matt-dray.com) `r fontawesome::fa('twitter')` [@mattdray](https://www.twitter.com/mattdray) `r fontawesome::fa('github')` [matt-dray](https://www.github.com/matt-dray) `r fontawesome::fa('pen')` [rostrum.blog](https://www.rostrum.blog)]
