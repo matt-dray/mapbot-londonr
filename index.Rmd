@@ -57,11 +57,7 @@ class: middle, center
 
 <a href="https://www.rostrum.blog"><img src="img/rostrum-hex.png", width = 40%></a>
 
-???
-* Turning showerthoughts into learning
-
 ---
-class: middle, center
 background-image: url("img/rostrum-blog-home.png")
 background-size: 100%
 
@@ -81,27 +77,22 @@ background-image: url("img/twitter-londonmapbot-tweet.png")
 background-size: 100%
 
 ---
-class: inverse
 background-image: url("img/mapbox-twickenham-Eu0ssieXMAAuSmw.jpg")
 background-size: 120%
 
 ---
-class: inverse
 background-image: url("img/mapbox-buckingham-palace-Ewv-OO3VkAcDV8k.jpg")
 background-size: 120%
 
 ---
-class: inverse
 background-image: url("img/mapbox-heathrow-E9DEbx9XMAIGD4c.jpg")
 background-size: 120%
 
 ---
-class: inverse
 background-image: url("img/mapbox-boat-E3eIMQvUYAA-u-t.jpg")
 background-size: 120%
 
 ---
-class: inverse
 background-image: url("img/mapbox-roads-FHxwDeDVcAUUb69.jpg")
 background-size: 120%
 
@@ -373,31 +364,21 @@ class: middle, center, inverse
 # The mapbotverse
 #`r fontawesome::fa('robot')`
 
-
 ---
-class: middle, center
 background-image: url("img/twitter-mapbot-esmapbot.png")
 background-size: 100%
 
-
 ---
-class: middle, center
 background-image: url("img/twitter-mapbot-narrowbotr.png")
 background-size: 100%
 
-
 ---
-class: middle, center
 background-image: url("img/twitter-mapbot-bigbookofr.png")
 background-size: 100%
 
 ---
-class: middle
-
-# Quickstart
-
-* Fork londonmapbot
-* Use the repo as a template
+background-image: url("img/github-londonmapbot.png")
+background-size: 100%
 
 ---
 class: middle, center, inverse
