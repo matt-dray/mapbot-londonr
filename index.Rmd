@@ -50,15 +50,20 @@ class: middle, center, inverse
 ---
 class: middle, center
 
-<a href="https://www.matt-dray.com"><img src="images/IUlhDKX9_400x400.png", width = 60%></a>
+<a href="https://www.matt-dray.com"><img src="img/mattdray-avatar.png", width = 60%></a>
 
 ---
 class: middle, center
 
-<a href="https://www.rostrum.blog"><img src="images/rostrum_hex.png", width = 40%></a>
+<a href="https://www.rostrum.blog"><img src="img/rostrum-hex.png", width = 40%></a>
 
 ???
 * Turning showerthoughts into learning
+
+---
+class: middle, center
+background-image: url("img/rostrum-blog-home.png")
+background-size: 100%
 
 ---
 class: middle, center, inverse
@@ -66,38 +71,38 @@ class: middle, center, inverse
 # What?
 
 ---
-class: middle, center, inverse
-background-image: url("images/profile.png")
+class: middle, center
+background-image: url("img/twitter-londonmapbot-profile.png")
 background-size: 100%
 
 ---
-class: middle, center, inverse
-background-image: url("images/tweet.png")
+class: middle, center
+background-image: url("img/twitter-londonmapbot-tweet.png")
 background-size: 100%
 
 ---
 class: inverse
-background-image: url("images/Ewv-OO3VkAcDV8k.jpg")
+background-image: url("img/mapbox-twickenham-Eu0ssieXMAAuSmw.jpg")
 background-size: 120%
 
 ---
 class: inverse
-background-image: url("images/FHxwDeDVcAUUb69.jpg")
+background-image: url("img/mapbox-buckingham-palace-Ewv-OO3VkAcDV8k.jpg")
 background-size: 120%
 
 ---
 class: inverse
-background-image: url("images/E9DEbx9XMAIGD4c.jpg")
+background-image: url("img/mapbox-heathrow-E9DEbx9XMAIGD4c.jpg")
 background-size: 120%
 
 ---
 class: inverse
-background-image: url("images/Eu0ssieXMAAuSmw.jpg")
+background-image: url("img/mapbox-boat-E3eIMQvUYAA-u-t.jpg")
 background-size: 120%
 
 ---
 class: inverse
-background-image: url("images/FHsHJuHXsAYPxJ3.jpg")
+background-image: url("img/mapbox-roads-FHxwDeDVcAUUb69.jpg")
 background-size: 120%
 
 ---
@@ -107,8 +112,6 @@ class: middle
 
 * Twitter API access from R
 
-* [.dark-font[By Mike Kearney .super[`r fontawesome::fa("link")`]]](https://twitter.com/kearneymw)
-
 * Free API, with limitations
 
 ???
@@ -116,34 +119,23 @@ class: middle
 * To request more than that, set `retryonratelimit = TRUE`
 
 ---
-class: middle
-
-```
-rtweet::search_tweets(
-  "#rstats",
-  n = 10000,
-  include_rts = FALSE
-)
-```
+class: middle, center
+background-image: url("img/rtweet-homepage.png")
+background-size: 100%
 
 ---
 class: middle
 
 # [.dark-font[`r fontawesome::fa("map")` MapBox .super[`r fontawesome::fa("link")`]]](https://www.mapbox.com/)
 
-* Satellite imagery via API
+* [.dark-font[Satellite imagery via API .super[`r fontawesome::fa("link")`]]](https://docs.mapbox.com/api/overview/)
 
-* Free, with limitations
-
-???
-* Covers the Earth at multiple zoom levels
-* Just replace URL elements
-* 50k requests total, x requests per min
+* [.dark-font[Free, with limitations .super[`r fontawesome::fa("link")`]]](https://docs.mapbox.com/api/overview/#rate-limits)
 
 ---
-class: middle
-
-[MapBox screenshot]
+class: middle, center
+background-image: url("img/mapbox-playground.png")
+background-size: 100%
 
 ---
 class: middle
@@ -159,9 +151,9 @@ class: middle
 * Public repo, x minutes
 
 ---
-class: middle
-
-[GitHub Actions screenshot]
+class: middle, center
+background-image: url("img/github-actions-dehex.png")
+background-size: 100%
 
 ---
 class: middle, center, inverse
@@ -376,24 +368,36 @@ rtweet::post_tweet(
 * Post the tweet, containing the text string and image, using the API token
 
 ---
+class: middle, center, inverse
+
+# The mapbotverse
+#`r fontawesome::fa('robot')`
+
+
+---
+class: middle, center
+background-image: url("img/twitter-mapbot-esmapbot.png")
+background-size: 100%
+
+
+---
+class: middle, center
+background-image: url("img/twitter-mapbot-narrowbotr.png")
+background-size: 100%
+
+
+---
+class: middle, center
+background-image: url("img/twitter-mapbot-bigbookofr.png")
+background-size: 100%
+
+---
 class: middle
 
 # Quickstart
 
 * Fork londonmapbot
 * Use the repo as a template
-
-
----
-class: middle, center, inverse
-
-# The mapbotverse
-#`r fontawesome::fa('robot')`
-
----
-class: middle
-
-[Placeholder text]
 
 ---
 class: middle, center, inverse

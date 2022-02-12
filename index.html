@@ -51,15 +51,20 @@ class: middle, center, inverse
 ---
 class: middle, center
 
-&lt;a href="https://www.matt-dray.com"&gt;&lt;img src="images/IUlhDKX9_400x400.png", width = 60%&gt;&lt;/a&gt;
+&lt;a href="https://www.matt-dray.com"&gt;&lt;img src="img/mattdray-avatar.png", width = 60%&gt;&lt;/a&gt;
 
 ---
 class: middle, center
 
-&lt;a href="https://www.rostrum.blog"&gt;&lt;img src="images/rostrum_hex.png", width = 40%&gt;&lt;/a&gt;
+&lt;a href="https://www.rostrum.blog"&gt;&lt;img src="img/rostrum-hex.png", width = 40%&gt;&lt;/a&gt;
 
 ???
 * Turning showerthoughts into learning
+
+---
+class: middle, center
+background-image: url("img/rostrum-blog-home.png")
+background-size: 100%
 
 ---
 class: middle, center, inverse
@@ -67,38 +72,38 @@ class: middle, center, inverse
 # What?
 
 ---
-class: middle, center, inverse
-background-image: url("images/profile.png")
+class: middle, center
+background-image: url("img/twitter-londonmapbot-profile.png")
 background-size: 100%
 
 ---
-class: middle, center, inverse
-background-image: url("images/tweet.png")
+class: middle, center
+background-image: url("img/twitter-londonmapbot-tweet.png")
 background-size: 100%
 
 ---
 class: inverse
-background-image: url("images/Ewv-OO3VkAcDV8k.jpg")
+background-image: url("img/mapbox-twickenham-Eu0ssieXMAAuSmw.jpg")
 background-size: 120%
 
 ---
 class: inverse
-background-image: url("images/FHxwDeDVcAUUb69.jpg")
+background-image: url("img/mapbox-buckingham-palace-Ewv-OO3VkAcDV8k.jpg")
 background-size: 120%
 
 ---
 class: inverse
-background-image: url("images/E9DEbx9XMAIGD4c.jpg")
+background-image: url("img/mapbox-heathrow-E9DEbx9XMAIGD4c.jpg")
 background-size: 120%
 
 ---
 class: inverse
-background-image: url("images/Eu0ssieXMAAuSmw.jpg")
+background-image: url("img/mapbox-boat-E3eIMQvUYAA-u-t.jpg")
 background-size: 120%
 
 ---
 class: inverse
-background-image: url("images/FHsHJuHXsAYPxJ3.jpg")
+background-image: url("img/mapbox-roads-FHxwDeDVcAUUb69.jpg")
 background-size: 120%
 
 ---
@@ -108,8 +113,6 @@ class: middle
 
 * Twitter API access from R
 
-* [.dark-font[By Mike Kearney .super[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg>]]](https://twitter.com/kearneymw)
-
 * Free API, with limitations
 
 ???
@@ -117,34 +120,23 @@ class: middle
 * To request more than that, set `retryonratelimit = TRUE`
 
 ---
-class: middle
-
-```
-rtweet::search_tweets(
-  "#rstats",
-  n = 10000,
-  include_rts = FALSE
-)
-```
+class: middle, center
+background-image: url("img/rtweet-homepage.png")
+background-size: 100%
 
 ---
 class: middle
 
 # [.dark-font[<svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M0 117.66v346.32c0 11.32 11.43 19.06 21.94 14.86L160 416V32L20.12 87.95A32.006 32.006 0 0 0 0 117.66zM192 416l192 64V96L192 32v384zM554.06 33.16L416 96v384l139.88-55.95A31.996 31.996 0 0 0 576 394.34V48.02c0-11.32-11.43-19.06-21.94-14.86z"/></svg> MapBox .super[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg>]]](https://www.mapbox.com/)
 
-* Satellite imagery via API
+* [.dark-font[Satellite imagery via API .super[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg>]]](https://docs.mapbox.com/api/overview/)
 
-* Free, with limitations
-
-???
-* Covers the Earth at multiple zoom levels
-* Just replace URL elements
-* 50k requests total, x requests per min
+* [.dark-font[Free, with limitations .super[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg>]]](https://docs.mapbox.com/api/overview/#rate-limits)
 
 ---
-class: middle
-
-[MapBox screenshot]
+class: middle, center
+background-image: url("img/mapbox-playground.png")
+background-size: 100%
 
 ---
 class: middle
@@ -160,9 +152,9 @@ class: middle
 * Public repo, x minutes
 
 ---
-class: middle
-
-[GitHub Actions screenshot]
+class: middle, center
+background-image: url("img/github-actions-dehex.png")
+background-size: 100%
 
 ---
 class: middle, center, inverse
@@ -385,24 +377,36 @@ rtweet::post_tweet(
 * Post the tweet, containing the text string and image, using the API token
 
 ---
+class: middle, center, inverse
+
+# The mapbotverse
+#<svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M32,224H64V416H32A31.96166,31.96166,0,0,1,0,384V256A31.96166,31.96166,0,0,1,32,224Zm512-48V448a64.06328,64.06328,0,0,1-64,64H160a64.06328,64.06328,0,0,1-64-64V176a79.974,79.974,0,0,1,80-80H288V32a32,32,0,0,1,64,0V96H464A79.974,79.974,0,0,1,544,176ZM264,256a40,40,0,1,0-40,40A39.997,39.997,0,0,0,264,256Zm-8,128H192v32h64Zm96,0H288v32h64ZM456,256a40,40,0,1,0-40,40A39.997,39.997,0,0,0,456,256Zm-8,128H384v32h64ZM640,256V384a31.96166,31.96166,0,0,1-32,32H576V224h32A31.96166,31.96166,0,0,1,640,256Z"/></svg>
+
+
+---
+class: middle, center
+background-image: url("img/twitter-mapbot-esmapbot.png")
+background-size: 100%
+
+
+---
+class: middle, center
+background-image: url("img/twitter-mapbot-narrowbotr.png")
+background-size: 100%
+
+
+---
+class: middle, center
+background-image: url("img/twitter-mapbot-bigbookofr.png")
+background-size: 100%
+
+---
 class: middle
 
 # Quickstart
 
 * Fork londonmapbot
 * Use the repo as a template
-
-
----
-class: middle, center, inverse
-
-# The mapbotverse
-#<svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M32,224H64V416H32A31.96166,31.96166,0,0,1,0,384V256A31.96166,31.96166,0,0,1,32,224Zm512-48V448a64.06328,64.06328,0,0,1-64,64H160a64.06328,64.06328,0,0,1-64-64V176a79.974,79.974,0,0,1,80-80H288V32a32,32,0,0,1,64,0V96H464A79.974,79.974,0,0,1,544,176ZM264,256a40,40,0,1,0-40,40A39.997,39.997,0,0,0,264,256Zm-8,128H192v32h64Zm96,0H288v32h64ZM456,256a40,40,0,1,0-40,40A39.997,39.997,0,0,0,456,256Zm-8,128H384v32h64ZM640,256V384a31.96166,31.96166,0,0,1-32,32H576V224h32A31.96166,31.96166,0,0,1,640,256Z"/></svg>
-
----
-class: middle
-
-[Placeholder text]
 
 ---
 class: middle, center, inverse
