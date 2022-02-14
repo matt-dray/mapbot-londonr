@@ -18,7 +18,7 @@ class: middle, center, inverse
 
 LondonR, 2022-02-17
 
-.small-font[`r fontawesome::fa('globe')` [matt-dray.com](https://www.matt-dray.com) `r fontawesome::fa('twitter')` [@mattdray](https://www.twitter.com/mattdray) `r fontawesome::fa('github')` [matt-dray](https://www.github.com/matt-dray) `r fontawesome::fa('pen')` [rostrum.blog](https://www.rostrum.blog)]
+.small-font[`r fontawesome::fa('globe')` [matt-dray.com](https://www.matt-dray.com)]<br>
 .small-font[[https://matt-dray.github.io/mapbot-londonr](https://matt-dray.github.io/mapbot-londonr)]
 
 ???
@@ -66,9 +66,7 @@ class: middle, center
 
 <a href="https://www.matt-dray.com"><img src="img/mattdray-avatar.png", width = 40%></a>
 
-.small-font[
-`r fontawesome::fa('globe')` [.dark-font[matt-dray.com]](https://www.matt-dray.com) `r fontawesome::fa('twitter')` [.dark-font[@mattdray]](https://www.twitter.com/mattdray) `r fontawesome::fa('github')` [.dark-font[matt-dray]](https://www.github.com/matt-dray) `r fontawesome::fa('pen')` [.dark-font[rostrum.blog]](https://www.rostrum.blog)
-]
+.small-font[`r fontawesome::fa('globe')` [.dark-font[matt-dray.com]](https://www.matt-dray.com) `r fontawesome::fa('twitter')` [.dark-font[@mattdray]](https://www.twitter.com/mattdray) `r fontawesome::fa('github')` [.dark-font[matt-dray]](https://www.github.com/matt-dray) `r fontawesome::fa('pen')` [.dark-font[rostrum.blog]](https://www.rostrum.blog)]
 
 ???
 * Data analyst in the public sector
@@ -412,13 +410,20 @@ rtweet::post_tweet(
 class: middle, center, inverse
 
 # [The mapbotverse .super[`r fontawesome::fa("link")`]](https://twitter.com/i/lists/1492559073287581707)
-# `r fontawesome::fa('robot')`
 
 ???
 * You don't need to take my word for it
 * Many other people have adapted the code for other map bots and made it much better
 * But also people have created scheduled bots that don't involve maps
 * Hopefully this is inspirational
+
+---
+background-image: url("img/twitter-mapbotverse.png")
+background-size: 100%
+
+???
+* To provide ideas, I've added to a Twitter list the accounts I can find that have used londonmapbot code, improved it, or were inspired by it
+* I'll give three different examples: two mapbots, one that does something else
 
 ---
 background-image: url("img/twitter-mapbot-esmapbot.png")
