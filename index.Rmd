@@ -18,8 +18,9 @@ class: middle, center, inverse
 
 LondonR, 2022-02-17
 
-.small-font[`r fontawesome::fa('globe')` [matt-dray.com](https://www.matt-dray.com)]<br>
-.small-font[[https://matt-dray.github.io/mapbot-londonr](https://matt-dray.github.io/mapbot-londonr)]
+Matt Dray
+
+.small-font[[matt-dray.github.io/mapbot-londonr](https://matt-dray.github.io/mapbot-londonr)]
 
 ???
 * Find the slides online now
@@ -30,11 +31,17 @@ class: middle
 
 # tl;dr
 
+.pull-left[
 * [.dark-font[Visit @londonmapbot .super[`r fontawesome::fa("link")`]]](https://www.twitter.com/londonmapbot)
 
 * [.dark-font[Fork on GitHub .super[`r fontawesome::fa("link")`]]](https://www.github.com/matt-dray/londonmapbot)
 
 * [.dark-font[Read the original blog .super[`r fontawesome::fa("link")`]]](https://www.rostrum.blog/2020/09/21/londonmapbot/)
+]
+
+.pull-right[
+<img src='img/qr.png' alt='QR code pointing to the source for these slides on GitHub.'>
+]
 
 ???
 * Too long; didn't read
@@ -146,9 +153,9 @@ class: middle
 
 # [.dark-font[`r fontawesome::fa("map")` Mapbox .super[`r fontawesome::fa("link")`]]](https://www.mapbox.com/)
 
-* [.dark-font[Satellite imagery via API .super[`r fontawesome::fa("link")`]]](https://docs.mapbox.com/api/overview/)
+* [.dark-font[Satellite imagery and maps .super[`r fontawesome::fa("link")`]]](https://docs.mapbox.com/api/overview/)
 
-* [.dark-font[Free, with limitations .super[`r fontawesome::fa("link")`]]](https://docs.mapbox.com/api/maps/static-images/#static-images-api-restrictions-and-limits)
+* [.dark-font[Free API, with limitations .super[`r fontawesome::fa("link")`]]](https://docs.mapbox.com/api/maps/static-images/#static-images-api-restrictions-and-limits)
 
 ???
 * 1250 requests per minute to the static image API
@@ -193,15 +200,15 @@ class: middle, center, inverse
 ---
 class: middle
 
-# [.dark-font[`r fontawesome::fa("twitter")` Twitter .super[`r fontawesome::fa("link")`]]](https://docs.ropensci.org/rtweet/)
+# .dark-font[`r fontawesome::fa("twitter")` Twitter]
 
-1. .dark-font[Start a new account]
+1. .dark-font[Start an account]
 
 1. [.dark-font[Get developer status .super[`r fontawesome::fa("link")`]]](https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api)
 
 1. [.dark-font[Get elevated API access .super[`r fontawesome::fa("link")`]]](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api)
 
-1. [.dark-font[Get keys .super[`r fontawesome::fa("link")`]]](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api)
+1. [.dark-font[Create 'app', get keys .super[`r fontawesome::fa("link")`]]](https://developer.twitter.com/en/docs/apps/overview)
 
 ???
 * I did this with a fresh email account and 
@@ -226,11 +233,16 @@ class: middle
 
 1. [.dark-font[Store keys/tokens as secrets .super[`r fontawesome::fa("link")`]]](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
 
-1. Create scripts
+1. Create two scripts<br>
+
+    - .github/workflows/bot.yml
+    - bot.R
 
 ???
 * Sharing is caring
 * A public repo is less constrained by Actions limits
+* Secrets can be added in the repo Settings > Secrets (left-panel) > Actions > Repository secrets
+* Secrets in the londonmapbot repopp: MAPBOX_PUBLIC_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET, TWITTER_CONSUMER_API_KEY, TWITTER_CONSUMER_API_SECRET
 * Just two scripts are required, and in theory only one
 * A YAML file is just a specially formatted text document with some instructions that GitHub Actions will parse and execute
 * I've put the R code into a simple R script that is called by the YAML file
@@ -238,17 +250,7 @@ class: middle
 ---
 class: middle
 
-# Two files (!)
-
-* bot/
-    - .github/workflows/bot.yml<br>
-    - bot.R
-
----
-class: middle
-
 # [.dark-font[bot.yml .super[`r fontawesome::fa("link")`]]](https://github.com/matt-dray/londonmapbot/blob/master/.github/workflows/londonmapbot.yml)
-
 
 ```{r eval=FALSE}
 name: londonmapbot
@@ -278,44 +280,124 @@ jobs:
 ---
 class: middle
 
-# bot.yml detail
-
-Schedule
+# [.dark-font[bot.yml .super[`r fontawesome::fa("link")`]]](https://github.com/matt-dray/londonmapbot/blob/master/.github/workflows/londonmapbot.yml)
 
 ```{r eval=FALSE}
+name: londonmapbot
+
 on:
   schedule:
-    - cron: '42 0/2 * * *'
-```
+    - cron: '42 0/2 * * *' #<<
 
-Secrets
-
-```{r eval=FALSE}
+jobs:
+  londonmapbot-post:
+    runs-on: macOS-latest
     env:
       TWITTER_CONSUMER_API_KEY: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
+      TWITTER_CONSUMER_API_SECRET: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
+      TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+      TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+      MAPBOX_PUBLIC_ACCESS_TOKEN: ${{ secrets.MAPBOX_PUBLIC_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@master
+      - name: Install rtweet package
+        run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
+      - name: Create and post tweet
+        run: Rscript londonmapbot-tweet.R
 ```
 
 ???
 * Cron here reads as 'minute 42 every two hours from hour 0'
 * Use a cron helper like [.dark-font[crontab.guru .super[`r fontawesome::fa("link")`]]](https://crontab.guru/), or my own [.dark-font[{dialga} package .super[`r fontawesome::fa("link")`]]](https://www.rostrum.blog/2021/04/10/dialga/) for converting R to cron to English
+
+---
+class: middle
+
+# [.dark-font[bot.yml .super[`r fontawesome::fa("link")`]]](https://github.com/matt-dray/londonmapbot/blob/master/.github/workflows/londonmapbot.yml)
+
+```{r eval=FALSE}
+name: londonmapbot
+
+on:
+  schedule:
+    - cron: '42 0/2 * * *'  
+
+jobs:
+  londonmapbot-post:
+    runs-on: macOS-latest #<<
+    env:
+      TWITTER_CONSUMER_API_KEY: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
+      TWITTER_CONSUMER_API_SECRET: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
+      TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+      TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+      MAPBOX_PUBLIC_ACCESS_TOKEN: ${{ secrets.MAPBOX_PUBLIC_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@master
+      - name: Install rtweet package
+        run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
+      - name: Create and post tweet
+        run: Rscript londonmapbot-tweet.R
+```
+
+---
+class: middle
+
+# [.dark-font[bot.yml .super[`r fontawesome::fa("link")`]]](https://github.com/matt-dray/londonmapbot/blob/master/.github/workflows/londonmapbot.yml)
+
+```{r eval=FALSE}
+name: londonmapbot
+
+on:
+  schedule:
+    - cron: '42 0/2 * * *'
+
+jobs:
+  londonmapbot-post:
+    runs-on: macOS-latest
+    env:
+      TWITTER_CONSUMER_API_KEY: ${{ secrets.TWITTER_CONSUMER_API_KEY }} #<<
+      TWITTER_CONSUMER_API_SECRET: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
+      TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+      TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+      MAPBOX_PUBLIC_ACCESS_TOKEN: ${{ secrets.MAPBOX_PUBLIC_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@master
+      - name: Install rtweet package
+        run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
+      - name: Create and post tweet
+        run: Rscript londonmapbot-tweet.R
+```
+
+???
 * The 'env' step is adding the secrets to the environment from the secrets stash in the repo
 
 ---
 class: middle
 
-# bot.yml detail
-
-Setup
+# [.dark-font[bot.yml .super[`r fontawesome::fa("link")`]]](https://github.com/matt-dray/londonmapbot/blob/master/.github/workflows/londonmapbot.yml)
 
 ```{r eval=FALSE}
+name: londonmapbot
+
+on:
+  schedule:
+    - cron: '42 0/2 * * *'
+
+jobs:
+  londonmapbot-post:
+    runs-on: macOS-latest
+    env:
+      TWITTER_CONSUMER_API_KEY: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
+      TWITTER_CONSUMER_API_SECRET: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
+      TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+      TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+      MAPBOX_PUBLIC_ACCESS_TOKEN: ${{ secrets.MAPBOX_PUBLIC_ACCESS_TOKEN }}
     steps:
       - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@master
-```
-
-Run
-
-```{r eval=FALSE}
+      - uses: r-lib/actions/setup-r@master #<<
       - name: Install rtweet package
         run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
       - name: Create and post tweet
@@ -324,45 +406,60 @@ Run
 
 ???
 * You can handy pre-prepared code from r-lib to set up the R environment on the remote worker
+
+---
+class: middle
+
+# [.dark-font[bot.yml .super[`r fontawesome::fa("link")`]]](https://github.com/matt-dray/londonmapbot/blob/master/.github/workflows/londonmapbot.yml)
+
+
+```{r eval=FALSE}
+name: londonmapbot
+
+on:
+  schedule:
+    - cron: '42 0/2 * * *'
+
+jobs:
+  londonmapbot-post:
+    runs-on: macOS-latest
+    env:
+      TWITTER_CONSUMER_API_KEY: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
+      TWITTER_CONSUMER_API_SECRET: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
+      TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+      TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+      MAPBOX_PUBLIC_ACCESS_TOKEN: ${{ secrets.MAPBOX_PUBLIC_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@master
+      - name: Install rtweet package
+        run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
+      - name: Create and post tweet
+        run: Rscript londonmapbot-tweet.R  #<<
+```
+
+???
 * You can split your steps up and name them, so you'll know where any errors occurred when you read your GitHub Actions logs
 * You can write R directly into this file, or source an R script, like our bot.R file
 
 ---
 class: middle
 
-# [.dark-font[bot.R .super[`r fontawesome::fa("link")`]]](https://github.com/matt-dray/londonmapbot/blob/master/londonmapbot-tweet.R) 
-
-Token
+# [.dark-font[bot.R (1) .super[`r fontawesome::fa("link")`]]](https://github.com/matt-dray/londonmapbot/blob/master/londonmapbot-tweet.R) 
 
 ```{r eval=FALSE}
-# Create Twitter token
-londonmapbot_token <- rtweet::create_token(
+londonmapbot_token <- rtweet::create_token(  #<<
   app = "londonmapbot",
-  consumer_key =    Sys.getenv("TWITTER_CONSUMER_API_KEY"),
+  consumer_key    = Sys.getenv("TWITTER_CONSUMER_API_KEY"),
   consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
-  access_token =    Sys.getenv("TWITTER_ACCESS_TOKEN"),
-  access_secret =   Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
+  access_token    = Sys.getenv("TWITTER_ACCESS_TOKEN"),
+  access_secret   = Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 )
-```
 
-???
-* bot.yml called the secrets from the repo into the environment, now we can pull the tokens into an R object
-* The token can then be used to access the Twitter API
-
----
-class: middle
-
-# [.dark-font[bot.R .super[`r fontawesome::fa("link")`]]](https://github.com/matt-dray/londonmapbot/blob/master/londonmapbot-tweet.R) 
-
-Image
-
-```{r eval=FALSE}
-# Generate random coordinates within specific limits
 lon <- round(runif(1, -0.489, 0.236), 4)
 lon <- format(lon, scientific = FALSE)
 lat <- round(runif(1, 51.28, 51.686), 4)
 
-# Build URL and fetch image from Mapbox API
 img_url <- paste0(
   "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/",
   paste0(lon, ",", lat),
@@ -370,7 +467,35 @@ img_url <- paste0(
   Sys.getenv("MAPBOX_PUBLIC_ACCESS_TOKEN")
 )
 
-# Download the image to a temporary location
+temp_file <- tempfile()
+download.file(img_url, temp_file)
+```
+
+---
+class: middle
+
+# [.dark-font[bot.R (1) .super[`r fontawesome::fa("link")`]]](https://github.com/matt-dray/londonmapbot/blob/master/londonmapbot-tweet.R)
+
+```{r eval=FALSE}
+londonmapbot_token <- rtweet::create_token(
+  app = "londonmapbot",
+  consumer_key    = Sys.getenv("TWITTER_CONSUMER_API_KEY"),
+  consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
+  access_token    = Sys.getenv("TWITTER_ACCESS_TOKEN"),
+  access_secret   = Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
+)
+
+lon <- round(runif(1, -0.489, 0.236), 4)
+lon <- format(lon, scientific = FALSE)
+lat <- round(runif(1, 51.28, 51.686), 4)
+
+img_url <- paste0(
+  "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/",
+  paste0(lon, ",", lat),  #<<
+  ",15,0/600x400@2x?access_token=",
+  Sys.getenv("MAPBOX_PUBLIC_ACCESS_TOKEN")
+)
+
 temp_file <- tempfile()
 download.file(img_url, temp_file)
 ```
@@ -379,26 +504,24 @@ download.file(img_url, temp_file)
 * Sample latitude and longitude
 * Put these into the Mapbox API string
 * Download file to temporary location
+* bot.yml called the secrets from the repo into the environment, now we can pull the tokens into an R object
+* The token can then be used to access the Twitter API
 
 ---
 class: middle
 
-# [.dark-font[bot.R .super[`r fontawesome::fa("link")`]]](https://github.com/matt-dray/londonmapbot/blob/master/londonmapbot-tweet.R)
-
-Tweet
+# [.dark-font[bot.R (2) .super[`r fontawesome::fa("link")`]]](https://github.com/matt-dray/londonmapbot/blob/master/londonmapbot-tweet.R)
 
 ```{r eval=FALSE}
-# Build the status message (text and URL)
 latlon_details <- paste0(
   lat, ", ", lon, "\n",
   "https://www.openstreetmap.org/#map=17/", lat, "/", lon, "/"
 )
 
-# Post the image to Twitter
-rtweet::post_tweet(
+rtweet::post_tweet( #<<
   status = latlon_details,
-  media = temp_file,
-  token = londonmapbot_token
+  media  = temp_file,
+  token  = londonmapbot_token
 )
 ```
 

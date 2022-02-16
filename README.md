@@ -30,3 +30,8 @@ For more about me, visit:
 * [rostrum.blog](https://www.rostrum.blog/)
 * [\@mattdray](https://twitter.com/mattdray)
 * [github.com/matt-dray](https://github.com/matt-dray)
+
+Slides preview:
+
+<img src='index.gif' alt='Preview gif of slides from the presentation.' width = 50%>
+
