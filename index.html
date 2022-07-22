@@ -17,7 +17,8 @@ class: middle, center, inverse
 
 # <svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M32,224H64V416H32A31.96166,31.96166,0,0,1,0,384V256A31.96166,31.96166,0,0,1,32,224Zm512-48V448a64.06328,64.06328,0,0,1-64,64H160a64.06328,64.06328,0,0,1-64-64V176a79.974,79.974,0,0,1,80-80H288V32a32,32,0,0,1,64,0V96H464A79.974,79.974,0,0,1,544,176ZM264,256a40,40,0,1,0-40,40A39.997,39.997,0,0,0,264,256Zm-8,128H192v32h64Zm96,0H288v32h64ZM456,256a40,40,0,1,0-40,40A39.997,39.997,0,0,0,456,256Zm-8,128H384v32h64ZM640,256V384a31.96166,31.96166,0,0,1-32,32H576V224h32A31.96166,31.96166,0,0,1,640,256Z"/></svg>
 
-LondonR, 2022-02-17
+LondonR, 2022-02-17&lt;br&gt;
+.small-font[Updated 2022-07-22]
 
 Matt Dray
 
@@ -456,12 +457,11 @@ class: middle
 
 
 ```r
-*londonmapbot_token &lt;- rtweet::create_token(
-  app = "londonmapbot",
-  consumer_key    = Sys.getenv("TWITTER_CONSUMER_API_KEY"),
-  consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
-  access_token    = Sys.getenv("TWITTER_ACCESS_TOKEN"),
-  access_secret   = Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
+*londonmapbot_token &lt;- rtweet::rtweet_bot(
+  api_key       = Sys.getenv("TWITTER_CONSUMER_API_KEY"),
+  api_secret    = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
+  access_token  = Sys.getenv("TWITTER_ACCESS_TOKEN"),
+  access_secret = Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 )
 
 lon &lt;- round(runif(1, -0.489, 0.236), 4)
@@ -475,7 +475,7 @@ img_url &lt;- paste0(
   Sys.getenv("MAPBOX_PUBLIC_ACCESS_TOKEN")
 )
 
-temp_file &lt;- tempfile()
+temp_file &lt;- tempfile(fileext = ".jpeg")
 download.file(img_url, temp_file)
 ```
 
@@ -486,12 +486,11 @@ class: middle
 
 
 ```r
-londonmapbot_token &lt;- rtweet::create_token(
-  app = "londonmapbot",
-  consumer_key    = Sys.getenv("TWITTER_CONSUMER_API_KEY"),
-  consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
-  access_token    = Sys.getenv("TWITTER_ACCESS_TOKEN"),
-  access_secret   = Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
+londonmapbot_token &lt;- rtweet::rtweet_bot(
+  api_key       = Sys.getenv("TWITTER_CONSUMER_API_KEY"),
+  api_secret    = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
+  access_token  = Sys.getenv("TWITTER_ACCESS_TOKEN"),
+  access_secret = Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 )
 
 lon &lt;- round(runif(1, -0.489, 0.236), 4)
@@ -505,7 +504,7 @@ img_url &lt;- paste0(
   Sys.getenv("MAPBOX_PUBLIC_ACCESS_TOKEN")
 )
 
-temp_file &lt;- tempfile()
+temp_file &lt;- tempfile(fileext = ".jpeg")
 download.file(img_url, temp_file)
 ```
 
@@ -515,6 +514,7 @@ download.file(img_url, temp_file)
 * Download file to temporary location
 * bot.yml called the secrets from the repo into the environment, now we can pull the tokens into an R object
 * The token can then be used to access the Twitter API
+* Updated to reflect changes in {rtweet} v1.0
 
 ---
 class: middle
@@ -528,16 +528,24 @@ latlon_details &lt;- paste0(
   "https://www.openstreetmap.org/#map=17/", lat, "/", lon, "/"
 )
 
+alt_text &lt;- paste(
+  "A satellite image of a random location in Greater London,",
+  "provided by MapBox. Typically contains a residential or",
+  "industrial area, some fields or a golf course."
+)
+
 *rtweet::post_tweet(
-  status = latlon_details,
-  media  = temp_file,
-  token  = londonmapbot_token
+  status         = latlon_details,
+  media          = temp_file,
+  media_alt_text = alt_text,
+  token          = londonmapbot_token
 )
 ```
 
 ???
 * Generate a string containing the coordinates and an OpenStreetMap link
-* Post the tweet, containing the text string and image, using the API token
+* Post the tweet, containing the text string, image and alt text, using the API token
+* Updated to reflect changes in {rtweet} v1.0
 
 ---
 class: middle, center, inverse

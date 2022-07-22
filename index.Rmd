@@ -16,7 +16,8 @@ class: middle, center, inverse
 
 # `r fontawesome::fa("robot")`
 
-LondonR, 2022-02-17
+LondonR, 2022-02-17<br>
+.small-font[Updated 2022-07-22]
 
 Matt Dray
 
@@ -448,12 +449,11 @@ class: middle
 # [.dark-font[bot.R (1) .super[`r fontawesome::fa("link")`]]](https://github.com/matt-dray/londonmapbot/blob/master/londonmapbot-tweet.R) 
 
 ```{r eval=FALSE}
-londonmapbot_token <- rtweet::create_token(  #<<
-  app = "londonmapbot",
-  consumer_key    = Sys.getenv("TWITTER_CONSUMER_API_KEY"),
-  consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
-  access_token    = Sys.getenv("TWITTER_ACCESS_TOKEN"),
-  access_secret   = Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
+londonmapbot_token <- rtweet::rtweet_bot(  #<<
+  api_key       = Sys.getenv("TWITTER_CONSUMER_API_KEY"),
+  api_secret    = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
+  access_token  = Sys.getenv("TWITTER_ACCESS_TOKEN"),
+  access_secret = Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 )
 
 lon <- round(runif(1, -0.489, 0.236), 4)
@@ -467,7 +467,7 @@ img_url <- paste0(
   Sys.getenv("MAPBOX_PUBLIC_ACCESS_TOKEN")
 )
 
-temp_file <- tempfile()
+temp_file <- tempfile(fileext = ".jpeg")
 download.file(img_url, temp_file)
 ```
 
@@ -477,12 +477,11 @@ class: middle
 # [.dark-font[bot.R (1) .super[`r fontawesome::fa("link")`]]](https://github.com/matt-dray/londonmapbot/blob/master/londonmapbot-tweet.R)
 
 ```{r eval=FALSE}
-londonmapbot_token <- rtweet::create_token(
-  app = "londonmapbot",
-  consumer_key    = Sys.getenv("TWITTER_CONSUMER_API_KEY"),
-  consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
-  access_token    = Sys.getenv("TWITTER_ACCESS_TOKEN"),
-  access_secret   = Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
+londonmapbot_token <- rtweet::rtweet_bot(
+  api_key       = Sys.getenv("TWITTER_CONSUMER_API_KEY"),
+  api_secret    = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
+  access_token  = Sys.getenv("TWITTER_ACCESS_TOKEN"),
+  access_secret = Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 )
 
 lon <- round(runif(1, -0.489, 0.236), 4)
@@ -496,7 +495,7 @@ img_url <- paste0(
   Sys.getenv("MAPBOX_PUBLIC_ACCESS_TOKEN")
 )
 
-temp_file <- tempfile()
+temp_file <- tempfile(fileext = ".jpeg")
 download.file(img_url, temp_file)
 ```
 
@@ -506,6 +505,7 @@ download.file(img_url, temp_file)
 * Download file to temporary location
 * bot.yml called the secrets from the repo into the environment, now we can pull the tokens into an R object
 * The token can then be used to access the Twitter API
+* Updated to reflect changes in {rtweet} v1.0
 
 ---
 class: middle
@@ -518,16 +518,24 @@ latlon_details <- paste0(
   "https://www.openstreetmap.org/#map=17/", lat, "/", lon, "/"
 )
 
-rtweet::post_tweet( #<<
-  status = latlon_details,
-  media  = temp_file,
-  token  = londonmapbot_token
+alt_text <- paste(
+  "A satellite image of a random location in Greater London,",
+  "provided by MapBox. Typically contains a residential or",
+  "industrial area, some fields or a golf course."
+)
+
+rtweet::post_tweet(  #<<
+  status         = latlon_details,
+  media          = temp_file,
+  media_alt_text = alt_text,
+  token          = londonmapbot_token
 )
 ```
 
 ???
 * Generate a string containing the coordinates and an OpenStreetMap link
-* Post the tweet, containing the text string and image, using the API token
+* Post the tweet, containing the text string, image and alt text, using the API token
+* Updated to reflect changes in {rtweet} v1.0
 
 ---
 class: middle, center, inverse
